@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Hangman-Multiplayer/static/css/main.7dc2b0da.chunk.css",
+    "main.js": "/Hangman-Multiplayer/static/js/main.db8db001.chunk.js",
+    "main.js.map": "/Hangman-Multiplayer/static/js/main.db8db001.chunk.js.map",
+    "runtime-main.js": "/Hangman-Multiplayer/static/js/runtime-main.dfcdc571.js",
+    "runtime-main.js.map": "/Hangman-Multiplayer/static/js/runtime-main.dfcdc571.js.map",
+    "static/js/2.392fb4ee.chunk.js": "/Hangman-Multiplayer/static/js/2.392fb4ee.chunk.js",
+    "static/js/2.392fb4ee.chunk.js.map": "/Hangman-Multiplayer/static/js/2.392fb4ee.chunk.js.map",
+    "index.html": "/Hangman-Multiplayer/index.html",
+    "static/css/main.7dc2b0da.chunk.css.map": "/Hangman-Multiplayer/static/css/main.7dc2b0da.chunk.css.map",
+    "static/js/2.392fb4ee.chunk.js.LICENSE.txt": "/Hangman-Multiplayer/static/js/2.392fb4ee.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dfcdc571.js",
+    "static/js/2.392fb4ee.chunk.js",
+    "static/css/main.7dc2b0da.chunk.css",
+    "static/js/main.db8db001.chunk.js"
+  ]
+}
