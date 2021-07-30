@@ -2,9 +2,17 @@ import React from 'react';
 
 class PlayerItem extends React.Component {
     render() {
+        let status = 'playing';
+        if (this.props.status === 1) {
+            status = 'won';
+        }
+        else if (this.props.status === 2) {
+            status = 'lost';
+        }
+
         if (this.props.player) {
             return (
-                <li className='player'>
+                <li className={'player ' + status}>
                     <span style={{flex: '1'}}>#{this.props.rank}</span>
                     <span style={{flex: '5'}}>{this.props.name} (YOU)</span>
                     <span style={{flex: '3'}}>Points: {this.props.score}</span>
@@ -13,7 +21,7 @@ class PlayerItem extends React.Component {
         }
         else {
             return (
-                <li>
+                <li className={status}>
                     <span style={{flex: '1'}}>#{this.props.rank}</span>
                     <span style={{flex: '5'}}>{this.props.name}</span>
                     <span style={{flex: '3'}}>Points: {this.props.score}</span>
@@ -26,6 +34,12 @@ class PlayerItem extends React.Component {
 class Scoreboard extends React.Component {
 
     render() {
+
+        let roundMessage = this.props.game.round > this.props.game.roundsPerGame ? 
+        'Game Over' : 
+        `Round ${this.props.game.round}/${this.props.game.roundsPerGame}`;
+        
+
         return (
             <div className='scoreContainer'>
                 <div className='infoTop'>
@@ -34,7 +48,7 @@ class Scoreboard extends React.Component {
                     </div>
                     <div className='roundTracker'>
                         <span>
-                            Round {this.props.game.round}/{this.props.game.roundsPerGame}
+                            {roundMessage}
                         </span>
                     </div>
                 </div>
@@ -46,6 +60,7 @@ class Scoreboard extends React.Component {
                             key={player.name}
                             player={player.name === this.props.player.name}
                             score={player.score}
+                            status={player.status}
                         />
                     )}
                 </ul>

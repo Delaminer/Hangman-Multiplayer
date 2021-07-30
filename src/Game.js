@@ -16,7 +16,7 @@ class Game extends React.Component {
 
         //There are many events that send the same data (they just occur as different events), 
         // so loop through each one and handle it the same way
-        const basicEvents = ['addPlayer', 'timeUpdate', 'scoreUpdate'];
+        const basicEvents = ['addPlayer', 'removePlayer', 'timeUpdate', 'scoreUpdate'];
 
         basicEvents.forEach(event => {
             this.socket.on(event, message => {
@@ -44,15 +44,10 @@ class Game extends React.Component {
                 //Get the player
                 newState.player = messageData.player;
                 //Get the custom hint (if in game)
-                // if (newState.game.round > 0)
+                if (newState.game.round > 0)
                     newState.hint = messageData.customHint.split('').join(' ');
-                // else
-                    // newState.hint = 'Please wait';
-
-                if (event === 'gameEnd') {
-                    //Special
-                    newState.gameEnd = true;
-                }
+                else
+                    newState.hint = '';
 
                 //Update the state
                 this.setState(newState);
@@ -73,8 +68,12 @@ class Game extends React.Component {
     }
 
     makeGuess(letter) {
-        //Make sure the player hasn't aready guessed this letter
-        if (this.state.player.correct.includes(letter) || this.state.player.incorrect.includes(letter)) return;
+        //Make sure the player hasn't aready guessed this letter, or they can't guess right now (already won/lost)
+        if (this.state.player.correct.includes(letter) || 
+            this.state.player.incorrect.includes(letter) || 
+            this.state.player.status !== 0 || 
+            this.state.player.lives <= 0) 
+            return;
 
         this.socket.emit('guess', JSON.stringify({
             guess: letter,
@@ -92,10 +91,6 @@ class Game extends React.Component {
         if (this.state.player.status === 2) {
             message = 'You lost!';
             bg = 'lightpink';
-        }
-        if (this.state.gameEnd) {
-            message = 'Game Over!';
-            bg = 'white';
         }
 
         let gameDisplay = (

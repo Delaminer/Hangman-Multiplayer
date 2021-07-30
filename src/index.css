@@ -100,14 +100,28 @@
 
     display: flex;
 }
+
+.scoreContainer .leaderboard li.won {
+    background-color: lightgreen;
+}
+.scoreContainer .leaderboard li.lost {
+    background-color: lightpink;
+}
+
+.scoreContainer .leaderboard li:nth-child(odd) {
+    background-color: rgb(238, 238, 238);
+}
+.scoreContainer .leaderboard li.won:nth-child(odd) {
+    background-color: rgb(117, 199, 117);
+}
+.scoreContainer .leaderboard li.lost:nth-child(odd) {
+    background-color: rgb(218, 140, 152);
+}
+
 .scoreContainer .leaderboard li span {
     display: inline-flex;
     align-items: center;
     text-align: center;
-}
-.scoreContainer .leaderboard li:nth-child(odd) {
-    background-color: rgb(238, 238, 238);
-    /* width: 100%; */
 }
 
 .scoreContainer .leaderboard li.player {
