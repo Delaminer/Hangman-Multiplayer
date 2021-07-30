@@ -31,13 +31,14 @@
 
 .left {
     flex: 2;
+    overflow-y: auto;
 }
 .right {
     flex: 5;
 }
 
 .scoreContainer {
-    width: 80%;
+    min-width: 80%;
     margin: auto;
 
     float: right;
@@ -47,6 +48,8 @@
     flex-direction: column;
     border: thin solid black;
     background-color: white;
+    /* overflow: normal; */
+    overflow-y: auto;
 
 }
 
@@ -90,7 +93,8 @@
 }
 .scoreContainer .leaderboard li {
     background-color: white;
-    height: 80px;
+    min-height: 40px;
+    line-height: 25px;
     
     padding-left: 10px;
 

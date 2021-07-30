@@ -5,8 +5,14 @@ import React from 'react';
 //Displays lives and hangman player UI
 class Lives extends React.Component {
     getHeart(x) {
-        x = x * 50;
-        const path = `M 25 396 m ${x} 0 l -20 -20 l 20 20 l 20 -20 a 10,10 90 1,0 -20,-20 a 10,10 90 1,0 -20,20 z`;
+        
+        // For 8 hearts:
+        // x = x * 50;
+        // const path = `M 25 396 m ${x} 0 l -20 -20 l 20 20 l 20 -20 a 10,10 90 1,0 -20,-20 a 10,10 90 1,0 -20,20 z`;
+
+        // For 10 hearts:
+        x = x * 40;
+        const path = `M 20 397 m ${x} 0 l -16 -16 l 16 16 l 16 -16 a 8,8 90 1,0 -16,-16 a 8,8 90 1,0 -16,16 z`;
         return (
             <g key={x}>
             {/* <G style={this.props.styles.heart} key={x}> */}

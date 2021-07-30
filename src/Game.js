@@ -10,7 +10,9 @@ class Game extends React.Component {
         super(props);
         
         //Connect to Socket.IO server
-        this.socket = io('https://Hangman-Server.delaminer.repl.co');
+        this.serverIP = 'Hangman-Server.delaminer.repl.co'
+        
+        this.socket = io(this.serverIP);
 
         //There are many events that send the same data (they just occur as different events), 
         // so loop through each one and handle it the same way
@@ -28,7 +30,7 @@ class Game extends React.Component {
         });
 
         //Complex events
-        const complexEvents = ['join', 'start', 'newRound', 'guessResult'];
+        const complexEvents = ['join', 'start', 'newRound', 'guessResult', 'gameEnd'];
 
         complexEvents.forEach(event => {
             this.socket.on(event, message => {
@@ -47,10 +49,22 @@ class Game extends React.Component {
                 // else
                     // newState.hint = 'Please wait';
 
+                if (event === 'gameEnd') {
+                    //Special
+                    newState.gameEnd = true;
+                }
+
                 //Update the state
                 this.setState(newState);
             });
         });
+
+        //Game close is special
+        this.socket.on('gameClose', msg => {
+            //Reconnect
+            this.socket = io(this.serverIP);
+        });
+
 
         //Set a dummy state so nothing is rendered before data is received
         this.state = {
@@ -79,14 +93,18 @@ class Game extends React.Component {
             message = 'You lost!';
             bg = 'lightpink';
         }
+        if (this.state.gameEnd) {
+            message = 'Game Over!';
+            bg = 'white';
+        }
 
         let gameDisplay = (
             <div className='gameContainer' style={{backgroundColor: bg}}>
-                <div style={{flex: '2'}}>
+                {/* <div style={{flex: '2'}}>
                     <div className='status'>
                         {message}
                     </div>
-                    {/* <div style={{textAlign: 'center'}}>
+                    <div style={{textAlign: 'center'}}>
                         <button 
                             className='restart' 
                             onClick={() => this.restart()}
@@ -94,9 +112,9 @@ class Game extends React.Component {
                         >
                             Play Again
                         </button>
-                    </div> */}
-                </div>
-                <div style={{flex: '6'}}>
+                    </div>
+                </div> */}
+                <div style={{flex: '8'}}>
                     <Lives 
                         lives={this.state.player.lives}
                     />
@@ -120,10 +138,10 @@ class Game extends React.Component {
         return (
             <div className='container' style={{backgroundColor: bg}}>
                 <div className='left'>
-                    
                     <Scoreboard 
                         game={this.state.game}
                         player={this.state.player}
+                        gameEnd={this.state.gameEnd}
                     />
                 </div>
                 <div className='right'>
