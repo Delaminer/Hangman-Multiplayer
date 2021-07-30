@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Hangman-Multiplayer/static/css/main.b330c086.chunk.css",
-    "main.js": "/Hangman-Multiplayer/static/js/main.0d921d99.chunk.js",
-    "main.js.map": "/Hangman-Multiplayer/static/js/main.0d921d99.chunk.js.map",
+    "main.css": "/Hangman-Multiplayer/static/css/main.4b2b82d7.chunk.css",
+    "main.js": "/Hangman-Multiplayer/static/js/main.d51d06fb.chunk.js",
+    "main.js.map": "/Hangman-Multiplayer/static/js/main.d51d06fb.chunk.js.map",
     "runtime-main.js": "/Hangman-Multiplayer/static/js/runtime-main.dfcdc571.js",
     "runtime-main.js.map": "/Hangman-Multiplayer/static/js/runtime-main.dfcdc571.js.map",
     "static/js/2.53b9dd7d.chunk.js": "/Hangman-Multiplayer/static/js/2.53b9dd7d.chunk.js",
     "static/js/2.53b9dd7d.chunk.js.map": "/Hangman-Multiplayer/static/js/2.53b9dd7d.chunk.js.map",
     "index.html": "/Hangman-Multiplayer/index.html",
-    "static/css/main.b330c086.chunk.css.map": "/Hangman-Multiplayer/static/css/main.b330c086.chunk.css.map",
+    "static/css/main.4b2b82d7.chunk.css.map": "/Hangman-Multiplayer/static/css/main.4b2b82d7.chunk.css.map",
     "static/js/2.53b9dd7d.chunk.js.LICENSE.txt": "/Hangman-Multiplayer/static/js/2.53b9dd7d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dfcdc571.js",
     "static/js/2.53b9dd7d.chunk.js",
-    "static/css/main.b330c086.chunk.css",
-    "static/js/main.0d921d99.chunk.js"
+    "static/css/main.4b2b82d7.chunk.css",
+    "static/js/main.d51d06fb.chunk.js"
   ]
 }
